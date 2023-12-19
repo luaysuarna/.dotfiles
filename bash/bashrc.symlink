@@ -1,0 +1,32 @@
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
+[[ -s "$HOME/.person" ]] && source "$HOME/.person"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+# original source export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+export PS1="\W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+export NVM_DIR="$HOME/.nvm"
+  . "/usr/local/opt/nvm/nvm.sh"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+alias gco='git checkout'
+alias gs='git status'
+alias gb='git branch'
+alias gd='git diff'
+export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+export EDITOR="vim"
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+# export JAVA_HOME=$HOME/OpenJDK/jdk-17.0.2.jdk/Contents/Home
+export PATH=$JAVA_HOME/bin:$PATH
+export DATABASE_USER=luaysuarna
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH

@@ -26,3 +26,5 @@ end
 def pbpaste
   `pbpaste`
 end
+
+AwesomePrint.irb!
